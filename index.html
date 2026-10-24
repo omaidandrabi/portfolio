@@ -262,7 +262,7 @@ h1,h2,h3{color:var(--paper)}
  .idx__plane{width:104vw;grid-template-columns:repeat(10,1fr);gap:4px;transform-style:flat;will-change:transform;margin-top:9vh;transform:rotateX(26deg) translateZ(-40px);contain:layout paint}
  .tile{aspect-ratio:1/1;filter:none;opacity:.34;transition:opacity .45s,transform .32s cubic-bezier(.4,0,.6,1);border-radius:3px;transform:none;box-shadow:none}
  .tile.lit{opacity:1}
- .tile.hot{opacity:1;outline:2px solid var(--tung);outline-offset:-2px;box-shadow:0 10px 24px rgba(0,0,0,.55);transform:scale(1.42,1.5);transition:opacity .3s,transform .6s cubic-bezier(.2,1.6,.4,1);z-index:6;will-change:transform}
+ .tile.hot{opacity:1;outline:2px solid var(--tung);outline-offset:-2px;box-shadow:0 10px 24px rgba(0,0,0,.55);transform:scale(1.42,1.5);transition:opacity .3s,transform .5s cubic-bezier(.2,1.7,.4,1);z-index:6;will-change:transform}
  .tile.hot video{display:none}
  .tile.off{opacity:.06}
  .chips{bottom:3.5vh;left:0;right:0;padding:0 5vw;flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none}
@@ -633,7 +633,7 @@ if(mobile){
   function tileAt(x,y){const el=document.elementFromPoint(x,y);const t=el&&el.closest('.tile');if(!t)return null;const V=tiles.filter(q=>!q.classList.contains('off'));const i=V.indexOf(t);return i<0?null:[i%C+.5,Math.floor(i/C)+.5]}
   function touch(e){const g=tileAt(e.clientX,e.clientY);if(!g)return;lastTouch=performance.now();lightGrid(g[0],g[1],1.6)}
   istage.addEventListener('pointerdown',touch,{passive:true});istage.addEventListener('pointermove',e=>{if(e.pointerType!=='mouse'&&e.buttons)touch(e)},{passive:true});
-  function auto(now){const r=istage.getBoundingClientRect();if(r.top<innerHeight&&r.bottom>0&&now-lastTouch>2500&&now-lastAuto>420){lastAuto=now;const t=now/1000;lightGrid(C/2+Math.sin(t*.38)*3.8,rows/2+Math.sin(t*.27+1.1)*rows*.34,1.6)}requestAnimationFrame(auto)}
+  function auto(now){const r=istage.getBoundingClientRect();if(r.top<innerHeight&&r.bottom>0&&now-lastTouch>3000&&now-lastAuto>1500){lastAuto=now;const t=now/1000;lightGrid(C/2+Math.sin(t*.38)*3.8,rows/2+Math.sin(t*.27+1.1)*rows*.34,1.6)}requestAnimationFrame(auto)}
   requestAnimationFrame(auto);
 }
 $('#chips').addEventListener('click',e=>{const b=e.target.closest('.chip');if(!b)return;$$('.chip').forEach(c=>c.setAttribute('aria-pressed',c===b));const f=b.dataset.f;tiles.forEach(t=>t.classList.toggle('off',f!=='all'&&t.dataset.cat!==f))});
