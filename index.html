@@ -26,8 +26,12 @@ h1,h2,h3{color:var(--paper)}
 /* leader */
 .leader{position:fixed;inset:0;z-index:100;background:var(--ink);display:grid;place-items:center;transition:clip-path .9s cubic-bezier(.77,0,.18,1)}
 .leader.out{clip-path:inset(0 0 100% 0);pointer-events:none}
+.leader__bg{position:absolute;inset:-4%;width:108%;height:108%;object-fit:cover;object-position:50% 35%;filter:saturate(.75) brightness(.55);animation:lzoom 4s cubic-bezier(.2,.6,.2,1) forwards;opacity:0}
+@keyframes lzoom{0%{opacity:0;transform:scale(1.08)}20%{opacity:1}100%{opacity:1;transform:scale(1)}}
+.leader__sh{position:absolute;inset:0;background:radial-gradient(ellipse 70% 60% at 50% 45%,rgba(11,12,11,.25),rgba(11,12,11,.9) 100%),linear-gradient(to bottom,rgba(11,12,11,.6),transparent 30%,transparent 70%,rgba(11,12,11,.8))}
+.leader>div{position:relative}
 .leader__w{overflow:hidden;line-height:1}
-.leader__w span{display:block;color:var(--paper);font-family:var(--fd);font-weight:900;font-size:clamp(56px,13vw,200px);letter-spacing:.01em;transform:translateY(110%);animation:up .9s cubic-bezier(.2,.8,.2,1) .25s forwards}
+.leader__w span{display:block;color:var(--paper);font-family:var(--fd);font-weight:900;font-size:clamp(44px,11vw,180px);letter-spacing:.01em;white-space:nowrap;text-align:center;transform:translateY(110%);animation:up .9s cubic-bezier(.2,.8,.2,1) .25s forwards}
 .leader__line{width:0;height:3px;background:var(--tung);margin-top:14px;animation:line .8s cubic-bezier(.77,0,.18,1) .9s forwards}
 @keyframes up{to{transform:none}}@keyframes line{to{width:100%}}
 
@@ -431,7 +435,7 @@ h1,h2,h3{color:var(--paper)}
 </style>
 </head>
 <body>
-<div class="leader" id="leader" aria-hidden="true"><div><div class="leader__w"><span>OMAID ANDRABI</span></div><div class="leader__line"></div></div></div>
+<div class="leader" id="leader" aria-hidden="true"><img class="leader__bg" src="media/about3/silhouette.webp" alt="" fetchpriority="high"><i class="leader__sh"></i><div><div class="leader__w"><span>OMAID ANDRABI</span></div><div class="leader__line"></div></div></div>
 <div class="cur" id="cur" aria-hidden="true"></div>
 
 <header class="bar">
