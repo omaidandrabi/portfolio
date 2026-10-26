@@ -628,7 +628,7 @@ new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){ws.forEach((w,i
   const sec=$('#about');if(!sec)return;
   const pin=sec.querySelector('.ab__pin'),cv=$('#abCv'),cx=cv.getContext('2d'),mon=$('#abMon');
   const phs=$$('.ab__ph'),beats=$$('.ab__beat'),yrs=$$('.ab__yr'),head=$('#abHead'),bar=$('#abBar'),tc=$('#abTc'),frl=$('#abFr');
-  const N=107,dir=mobile?'media/about/seq_m/':'media/about/seq/';
+  const N=107,dir=(mobile&&!/claude\.ai$/.test(location.hostname))?'media/about/seq_m/':'media/about/seq/';
   const imgs=new Array(N),loaded=new Array(N).fill(false);let loading=false,ready=0;
   // split beat words
   beats.forEach(b=>{const em=b.querySelector('em');em.innerHTML=em.textContent.trim().split(/\s+/).map(w=>`<span class="w">${w}</span>`).join(' ')});
