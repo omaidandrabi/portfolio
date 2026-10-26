@@ -256,6 +256,8 @@ h1,h2,h3{color:var(--paper)}
 .sc--1{left:5vw;right:5vw;bottom:14vh;text-align:left}
 .sc--1 em{font-size:clamp(52px,9.4vw,170px);max-width:12ch}
 .sc--2{left:5vw;top:50%;transform:translateY(-50%);max-width:48vw}
+.sc--3b{right:5vw;top:50%;transform:translateY(-50%);text-align:right;max-width:48vw}
+.sc--3b p{margin-left:auto}
 .sc--3{right:5vw;bottom:14vh;text-align:right;max-width:52vw}
 .sc--3 p{margin-left:auto}
 .sc--4{left:5vw;top:50%;transform:translateY(-50%);max-width:50vw}
@@ -282,7 +284,7 @@ h1,h2,h3{color:var(--paper)}
  .sc{left:5vw!important;right:5vw!important;max-width:none!important;text-align:left!important;top:auto!important;bottom:13vh!important;transform:none!important}
  .sc em,.sc--1 em,.sc--5 em{font-size:clamp(36px,11vw,54px)}
  .sc p{font-size:15px;margin-top:12px;max-width:none}
- .sc--3 p{margin-left:0}
+ .sc--3 p,.sc--3b p{margin-left:0}
  .sc--5{display:block}
  .sc--5 .side{margin-top:14px;gap:10px}
  .sc--5 .side p{display:none}
@@ -498,7 +500,7 @@ h1,h2,h3{color:var(--paper)}
     <div class="end__links">
       <a href="https://www.instagram.com/omaidandrabi/" target="_blank" rel="noopener">Instagram, @omaidandrabi</a>
       <a href="https://www.youtube.com/channel/UCi4PH0kYVi7MC5hdNPbLCPA" target="_blank" rel="noopener">YouTube</a>
-      <a href="https://omaidandrabi.mypixieset.com/" target="_blank" rel="noopener">Photography</a>
+      <a href="https://www.pexels.com/@omaid-andrabi-151117364/gallery/" target="_blank" rel="noopener">Photography</a>
     </div>
     <div class="end__foot"><span>Dubai, UAE and Srinagar, Kashmir. Available for projects worldwide.</span><span>© Omaid Andrabi</span></div>
   </div>
@@ -509,10 +511,11 @@ h1,h2,h3{color:var(--paper)}
     <canvas class="film__cv" id="fcv" aria-hidden="true"></canvas>
     <div class="film__vig"></div><div class="film__grain"></div>
     <div class="film__bar"><b id="fbar"></b></div>
-    <div class="film__top"><div><b>About</b>&nbsp;&nbsp;<span class="n" id="fnum">01 / 05</span></div><div class="film__loc" id="floc"><span class="on">Zanskar, Ladakh</span><span>Kargil road, Ladakh</span><span>Udaipur, 2022</span><span>Dubai, 2026</span><span>Dubai and Srinagar</span></div></div>
+    <div class="film__top"><div><b>About</b>&nbsp;&nbsp;<span class="n" id="fnum">01 / 06</span></div><div class="film__loc" id="floc"><span class="on">Zanskar, Ladakh</span><span>Kargil, Ladakh</span><span>Kargil road, Ladakh</span><span>Udaipur, 2022</span><span>Dubai, 2026</span><span>Dubai and Srinagar</span></div></div>
 
     <div class="sc sc--1"><small>The one behind the camera</small><em>I come from the mountains.</em><p>Srinagar, Kashmir. Where the light taught me first: a valley that turns gold at five in the evening, and a boy who kept noticing.</p></div>
-    <div class="sc sc--2"><em>I studied law for five years.</em><p>Somewhere between the lectures I bought a camera. <strong>The camera won.</strong></p></div>
+    <div class="sc sc--2"><em>I studied law for five years.</em><p>My family hoped for a courtroom. I kept looking through a viewfinder instead.</p></div>
+    <div class="sc sc--3b"><em>Then I bought a camera.</em><p>Somewhere between the lectures. <strong>The camera won.</strong></p></div>
     <div class="sc sc--3"><em>Thirty weddings before the first brand.</em><p>Other people's biggest days taught me to be invisible, and to never miss the moment.</p></div>
     <div class="sc sc--4"><em>Then Dubai.</em><p>Ministries, brands and stadiums. <strong>RTA Dubai, Dubai Health, Canon Middle East, DP World, the Dubai Games.</strong> From the first frame to the final grade.</p></div>
     <div class="sc sc--5"><div><small>Omaid Andrabi</small><em>Create. No matter what.</em></div>
@@ -603,7 +606,8 @@ new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){ws.forEach((w,i
   // scenes: seq [a,b] frame range, or still image. w = scroll weight
   const SC=[
     {seq:[0,34],w:1.0},
-    {still:mobile?ST+'dscf3109_m.webp':ST+'dscf3668.webp',w:.85,zoom:[1.06,1.14],pan:[0,-.03]},
+    {still:mobile?ST+'dscf3633_m.webp':ST+'dscf3874.webp',w:.8,zoom:[1.0,1.08],pan:[0,-.035]},
+    {still:mobile?ST+'dscf3109_m.webp':ST+'dscf3668.webp',w:.8,zoom:[1.06,1.14],pan:[0,-.03]},
     {seq:[35,58],w:.85},
     {seq:[59,93],w:1.0},
     {still:mobile?ST+'dscf3453_m.webp':ST+'dscf3691.webp',w:1.1,zoom:[1.12,1.02],pan:[0,0]}
@@ -645,7 +649,7 @@ new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){ws.forEach((w,i
       else if(i===SC.length-1&&q>=1){op=1;ty=0}
       else words[i].forEach(w=>w.classList.remove('lit'));
       const el=scs[i];el.style.opacity=op;el.style.setProperty('--ty',ty+'px');
-      el.style.transform=(el.classList.contains('sc--2')||el.classList.contains('sc--4'))&&!mobile?`translateY(calc(-50% + ${ty}px))`:`translateY(${ty}px)`;
+      el.style.transform=(el.classList.contains('sc--2')||el.classList.contains('sc--3b')||el.classList.contains('sc--4'))&&!mobile?`translateY(calc(-50% + ${ty}px))`:`translateY(${ty}px)`;
       el.style.pointerEvents=op>.6?'auto':'none';
       locs[i]&&locs[i].classList.toggle('on',i===k)});
     num.textContent=String(k+1).padStart(2,'0')+' / '+String(SC.length).padStart(2,'0');
