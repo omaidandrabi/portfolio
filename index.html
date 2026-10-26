@@ -581,7 +581,7 @@ h1,h2,h3{color:var(--paper)}
       <div class="facts"><span>BBA.LLB, JSS Law College</span><span>Final Cut Pro, DaVinci Resolve, Premiere Pro</span><span>English, Hindi, Urdu</span></div>
       <div class="tbl__links"><a href="https://www.instagram.com/omaidandrabi/" target="_blank" rel="noopener">Instagram</a><a href="https://www.youtube.com/channel/UCi4PH0kYVi7MC5hdNPbLCPA" target="_blank" rel="noopener">YouTube</a><a href="https://www.pexels.com/@omaid-andrabi-151117364/gallery/" target="_blank" rel="noopener">Pexels</a><a href="#top">Back to top</a></div>
     </div>
-    <div class="tbl__copy" id="tblCopy">© 2026 Omaid Andrabi · Dubai, UAE · Srinagar, Kashmir</div>
+    <div class="tbl__copy" id="tblCopy">© 2026 Omaid Andrabi · Dubai, UAE · Srinagar, Kashmir · <span id="buildTag">build 2710.0029</span></div>
   </div>
 </section>
 
@@ -775,7 +775,7 @@ function openCard(el){const group=el.closest('[data-group]');const ids=group?[..
   if(mobile&&el.matches('.tc,.tile')){if(el._pop)el._pop();else if(window.genie)genie(el);setTimeout(()=>open(ids,ids.indexOf(el.dataset.id)),340);return}
   open(ids,ids.indexOf(el.dataset.id))}
 if(mobile){let tx=0,ty=0,tt=0,tel=null;
-  function pickTunnel(sec,x,y){const cs=[...sec.querySelectorAll('.tc')],ci=cs.findIndex(c=>c.classList.contains('is-cur'));for(const c of cs.slice(Math.max(0,ci))){if(c.style.visibility==='hidden'||c.style.pointerEvents==='none'||+c.style.opacity<.5)continue;const r=c.getBoundingClientRect();if(x>=r.left&&x<=r.right&&y>=r.top&&y<=r.bottom)return c}return null}
+  function pickTunnel(sec,x,y){const cs=[...sec.querySelectorAll('.tc')];for(const c of cs){if(c.style.visibility==='hidden'||c.style.pointerEvents==='none'||+c.style.opacity<.5)continue;const r=c.getBoundingClientRect();if(x>=r.left&&x<=r.right&&y>=r.top&&y<=r.bottom)return c}return null}
   document.addEventListener('pointerdown',e=>{if(e.pointerType==='mouse')return;const tun=e.target.closest('.ch--tunnel');tel=tun?pickTunnel(tun,e.clientX,e.clientY):e.target.closest('[data-id]');if(tel&&tel.closest('.pr'))tel=null;if(tel&&tel._pop)tel._pop();tx=e.clientX;ty=e.clientY;tt=performance.now()},{passive:true});
   document.addEventListener('pointerup',e=>{if(!tel||e.pointerType==='mouse')return;const el=tel;tel=null;if(Math.hypot(e.clientX-tx,e.clientY-ty)>14||performance.now()-tt>600)return;if(plyr.classList.contains('on'))return;tapLock=performance.now();openCard(el)},{passive:true})}
 document.addEventListener('click',e=>{if(mobile&&performance.now()-tapLock<700){e.stopPropagation();e.preventDefault()}},true);
